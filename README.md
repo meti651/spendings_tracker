@@ -45,17 +45,21 @@ The objects contains the properties:
 
 ```javascript
 {
-    id: integer,
+    model: string
+    pk: integer,
     amount: integer,
     currency: string,
     description: string,
     date: timestamp
 }
 ```
-
+>**model**
+>
+>A string representing the object model type. This is mostly *spendingstracker.spending*.
+>
 >**id**
 >
->An integer representing the spending id.
+>An integer representing the spending id/primary key.
 >
 >**amount**
 >
@@ -77,25 +81,25 @@ The objects contains the properties:
 
 ### List all the spendings ordered by the amount
 
-Send a `GET` request to the endpoint `api/spendings/ordered?orderby=<property>` where the `<property>` can be the `date` or the `amount` word.
+Send a `GET` request to the endpoint `api/spendings/order/<order_by>` where the `<order_by>` can be the `date` or the `amount` word.
 
 ---
 
 ### List all the spendings filtered by the currency
 
-Send a `GET` request to the endpoint `api/spendings/filtered?filterby=<currency>` where the `<currency>` is a text with the currency type.
+Send a `GET` request to the endpoint `api/spendings/filter/<currency>` where the `<currency>` is a text with the currency type.
 
 ---
 
 ### Delete spending
 
-Send a `DELETE` request to the endpoint `api/spendings/<id>` where the `<id>` is the `id` of the spending we want to delete.
+Send a `DELETE` request to the endpoint `api/spendings/<id>/delete` where the `<id>` is the `id` of the spending we want to delete.
 
 ---
 
 ### Update spending
 
-Send a `UPDATE` request to the endpoint `api/spending/<id>` where the `<id>` is the `id` of the spending we want to update.
+Send a `PUT` request to the endpoint `api/spending/<id>/update` where the `<id>` is the `id` of the spending we want to update.
 Also send an object in the request body with the updated information.
 
 ```javascript
